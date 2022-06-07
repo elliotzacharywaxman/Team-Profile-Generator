@@ -1,0 +1,21 @@
+{
+    "name": "team-profile-generator",
+    "version": "1.0.0",
+    "description": "",
+    "main": "script.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node script",
+        "watch": "nodemon script"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "inquirer": "^6.5.0",
+        "jest": "^28.1.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.16"
+    }
+}
