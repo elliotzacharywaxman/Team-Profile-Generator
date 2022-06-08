@@ -83,12 +83,12 @@ const addCard = (teamMate) => {
   return  `
   <div class="card" style="width: 18rem;">
     <div class="card-header">
-      Featured
+    ${teamMate.name}
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">ROLE: ${teamMate.role}</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">ROLE: ${teamMate.getRole()}</li>
+      <li class="list-group-item">Employee ID: ${teamMate.id}</li>
+      <li class="list-group-item">Other Info: ${teamMate.specific}</li>
     </ul>
   </div>`
 };
@@ -110,13 +110,14 @@ const HTML = (employees) => {
     </head>
     <body>
       <div class="jumbotron">
-          <h1 class="display-4">Hello, world!</h1>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+          <h1 class="display-4">Our Team</h1>
+          <p class="lead">Congratulations on creating a team page. To remove this text, purchase the premium subscription.</p>
           <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          <p>Below are the profiles for each of our team members</p>
         </div>
+        <flex class ="row">
         ${renderCards(employees)}
+        </flex>
         <!-- Optional JavaScript; choose one of the two! -->
         <script type="text/JavaScript" src = "./index.js"></script>
         <!-- <script type="module" src = "./index.js"></script> -->
@@ -131,7 +132,7 @@ const HTML = (employees) => {
 // function that renders new cards and returns a string an array of html cards
 const renderCards = employees => {
   newCards =[];
-  employees.array.forEach(teamMate => {
+  employees.forEach(teamMate => {
     newCards.push(addCard(teamMate));
   });
   console.log(newCards)
@@ -140,7 +141,7 @@ const renderCards = employees => {
 
 // Function that writes the file after getting all of the User inputs
 const write = () => {
-  fs.writeFile("./dist/index.html",HTML, function(err,HTML){
+  fs.writeFile("./dist/index.html",HTML(employees), function(err,HTML){
     if (err) console.log('error',err);
   })
 }
